@@ -1,0 +1,30 @@
+@mixin normal-font {
+  font-family: "HelveticaNeue-Light";
+}
+
+@mixin light-font {
+  font-family: "HelveticaNeue-UltraLight";
+}
+
+@mixin heavy-font {
+  font-family: "HelveticaNeue-Medium";
+}
+
+$fontsPath: '/assets/' !default;
+
+// There's some subtlety here:
+// http://paulirish.com/2009/bulletproof-font-face-implementation-syntax/
+@mixin font-face($fontFamily, $fileName: null) {
+  $fileName: $fontFamily !default;
+
+  @font-face {
+    font-family: $fontFamily;
+    src: url("#{$fontsPath}/#{$fileName}.eot", font);
+    src: local('url-that-will-never-exist'),
+         url("#{$fontsPath}/#{$fileName}.woff", font) format('woff'),
+         url("#{$fontsPath}/#{$fileName}.ttf", font) format('truetype'),
+         url("#{$fontsPath}/#{$fileName}.svg", font) format('svg');
+  }
+}
+
+@include font-face("HelveticaNeue-Light");
