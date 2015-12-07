@@ -1,5 +1,5 @@
 GEM
-  remote: http://artifactory.dev.bloomberg.com:8080/artifactory/api/gems/rubygems/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
@@ -175,6 +175,3 @@ DEPENDENCIES
   sqlite3
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
-
-BUNDLED WITH
-   1.10.6

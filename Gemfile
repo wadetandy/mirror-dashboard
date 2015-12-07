@@ -1,5 +1,4 @@
-# source 'http://rubygems.org'
-source "http://artifactory.dev.bloomberg.com:8080/artifactory/api/gems/rubygems/"
+source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

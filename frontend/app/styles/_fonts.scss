@@ -10,7 +10,7 @@
   font-family: "HelveticaNeue-Medium";
 }
 
-$fontsPath: '/assets/' !default;
+$fontsPath: '/assets' !default;
 
 // There's some subtlety here:
 // http://paulirish.com/2009/bulletproof-font-face-implementation-syntax/
@@ -19,12 +19,14 @@ $fontsPath: '/assets/' !default;
 
   @font-face {
     font-family: $fontFamily;
-    src: url("#{$fontsPath}/#{$fileName}.eot", font);
+    src: url("#{$fontsPath}/#{$fileName}.eot");
     src: local('url-that-will-never-exist'),
-         url("#{$fontsPath}/#{$fileName}.woff", font) format('woff'),
-         url("#{$fontsPath}/#{$fileName}.ttf", font) format('truetype'),
-         url("#{$fontsPath}/#{$fileName}.svg", font) format('svg');
+         url("#{$fontsPath}/#{$fileName}.woff") format('woff'),
+         url("#{$fontsPath}/#{$fileName}.ttf") format('truetype'),
+         url("#{$fontsPath}/#{$fileName}.svg") format('svg');
   }
 }
 
 @include font-face("HelveticaNeue-Light");
+@include font-face("HelveticaNeue-UltraLight");
+@include font-face("HelveticaNeue-Medium");
