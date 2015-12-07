@@ -33,6 +33,11 @@ gem 'active_model_serializers'
 # gem 'capistrano-rails', group: :development
 
 gem 'ember-cli-rails', '~> 0.5.2'
+gem 'faraday'
+gem 'open-weather'
+gem 'responders'
+
+gem 'pry'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
