@@ -4,12 +4,13 @@ class Weather
 
   OPEN_WEATHER_API_KEY = 'c4b70d6aa62659b456bce2007f59a09c'
 
-  attr_reader :attributes
+  attr_reader :attributes, :id
 
   def self.find_by_city_id(city_id)
     weather = {
       current:  ::OpenWeather::Current.city_id(city_id, open_weather_options),
-      forecast: ::OpenWeather::Forecast.city_id(city_id, open_weather_options)
+      forecast: ::OpenWeather::Forecast.city_id(city_id, open_weather_options),
+      id: city_id
     }.with_indifferent_access
 
     self.new(weather)
@@ -17,6 +18,7 @@ class Weather
 
   def initialize(attributes = {})
     @attributes = attributes
+    @id = attributes[:id]
   end
 
   def location
@@ -24,7 +26,7 @@ class Weather
   end
 
   def current
-    @current ||= Snapshot.new(attributes[:current])
+    @current ||= Snapshot.new(attributes[:current].merge({id: @id}))
   end
 
   def forecast
@@ -52,10 +54,11 @@ class Weather
     include ActiveModel::Model
     include ActiveModel::Serializers::JSON
 
-    attr_reader :attributes
+    attr_reader :attributes, :id
 
     def initialize(attributes = {})
       @attributes = attributes
+      @id = attributes[:id]
     end
 
     def read_attribute_for_serialization(key)
