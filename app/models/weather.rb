@@ -93,7 +93,7 @@ class Weather
       @attributes[:main][:pressure]
     end
 
-    def unix_timestamp
+    def timestamp
       @attributes[:dt]
     end
 
